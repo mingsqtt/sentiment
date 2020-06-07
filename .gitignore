@@ -1,2 +1,17 @@
 Day2/Data/glove.6B.100d.txt
 
+Day1/__pycache__/
+Day1/.ipynb_checkpoints/
+Day1/.idea/
+
+Day2/__pycache__/
+Day2/.ipynb_checkpoints/
+Day2/.idea/
+
+Day3/__pycache__/
+Day3/.ipynb_checkpoints/
+Day3/.idea/
+
+Day4/__pycache__/
+Day4/.ipynb_checkpoints/
+Day4/.idea/
