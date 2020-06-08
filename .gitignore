@@ -1,3 +1,8 @@
+*__pycache__*
+*.idea*
+*.ipynb_checkpoints*
+*.DS_Store
+
 Day2/Data/glove.6B.100d.txt
 
 Day1/__pycache__/
