@@ -1,9 +1,9 @@
 import os
 import re, sys
 import json
-from feedparser import parse
 from requests import get
 from bs4 import BeautifulSoup
+from feedparser import parse
 
 TIMEOUT = 30
 
@@ -16,15 +16,13 @@ def removePunc(phrase):
     return phrase
 
 
-newsurl = "http://www.channelnewsasia.com/rss/latest_cna_world_rss.xml"
-newsurl = "http://www.channelnewsasia.com/rss/latest_cna_sg_rss.xml"
-newsurl = "http://www.channelnewsasia.com/rss/latest_cna_asiapac_rss.xml"
-newsurl = "http://www.channelnewsasia.com/rss/latest_cna_biz_rss.xml"
+newsurl = "https://feeds.a.dj.com/rss/RSSOpinion.xml"
+newsurl = "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml"
 rss = parse(newsurl)
 print(rss)
 
-if os.path.exists("data/cna.json"): os.remove("data/cna.json")
-ffile = open("data/cna.json","w")
+if os.path.exists("data/wsj.json"): os.remove("data/wsj.json")
+ffile = open("data/wsj.json","w")
 
 jsonlist = []
 print("n_rss_entries: {}".format(len(rss['entries'])))
@@ -32,7 +30,7 @@ for i, rss_entry in enumerate(rss['entries']):  # note format can change time to
     # i, rss_entry = 0, rss['entries'][0]
     # print(rss_entry)
     try:
-        url_link = rss_entry['id']
+        url_link = rss_entry['link']
         print("[{}] - {}".format(i, url_link))
         url_content = get(url_link, timeout=TIMEOUT)
         if url_content.ok:
