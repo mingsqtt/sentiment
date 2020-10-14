@@ -195,6 +195,9 @@ print(nlp.pipe_names)
 ner = nlp.get_pipe('ner')
 optimizer = nlp.entity.create_optimizer()
 
+ner.add_label("ORG")
+ner.add_label("PRODUCT")
+
 n_iter = 10
 other_pipes = [pipe for pipe in nlp.pipe_names if pipe != 'ner']
 with nlp.disable_pipes(*other_pipes):  # only train NER
@@ -210,7 +213,7 @@ with nlp.disable_pipes(*other_pipes):  # only train NER
         nlp.update(texts, annotations, sgd=optimizer, drop=0.35, losses=losses)
         print('Losses', losses)
 
-doc = nlp("I think the ideapad is really duarable")
+doc = nlp("I think the Ideapad is really duarable, but I will still prefer the ThinkPad's keyboard, compared to MacBook. Its Intel CPU is also a plus point")
 sent = list(doc.sents)[0]
 print([w.label_ for w in doc.ents])
 print([w for w in doc.ents])
